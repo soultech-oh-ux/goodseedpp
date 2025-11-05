@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useMutation } from "@tanstack/react-query";
+import { insertInquirySchema } from "@shared/schema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -21,23 +23,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Send } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
+import type { z } from "zod";
 
-const inquiryFormSchema = z.object({
-  type: z.string().min(1, "문의 유형을 선택해주세요"),
-  name: z.string().min(2, "이름을 입력해주세요"),
-  email: z.string().email("올바른 이메일을 입력해주세요"),
-  phone: z.string().optional(),
-  subject: z.string().min(2, "제목을 입력해주세요"),
-  message: z.string().min(10, "내용을 10자 이상 입력해주세요"),
-});
-
-type InquiryFormData = z.infer<typeof inquiryFormSchema>;
+type InquiryFormData = z.infer<typeof insertInquirySchema>;
 
 export default function InquiryForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<InquiryFormData>({
-    resolver: zodResolver(inquiryFormSchema),
+    resolver: zodResolver(insertInquirySchema),
     defaultValues: {
       type: "",
       name: "",
@@ -48,15 +43,34 @@ export default function InquiryForm() {
     },
   });
 
+  const createInquiryMutation = useMutation({
+    mutationFn: async (data: InquiryFormData) => {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error("문의 전송에 실패했습니다");
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "문의가 전송되었습니다",
+        description: "빠른 시일 내에 답변드리겠습니다.",
+      });
+      form.reset();
+    },
+    onError: (error) => {
+      toast({
+        title: "오류가 발생했습니다",
+        description: error instanceof Error ? error.message : "문의 전송에 실패했습니다.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const onSubmit = async (data: InquiryFormData) => {
-    setIsSubmitting(true);
-    console.log("Form submitted:", data);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    alert("문의가 성공적으로 전송되었습니다!");
-    form.reset();
-    setIsSubmitting(false);
+    createInquiryMutation.mutate(data);
   };
 
   return (
@@ -109,7 +123,7 @@ export default function InquiryForm() {
               <FormItem>
                 <FormLabel>연락처 (선택)</FormLabel>
                 <FormControl>
-                  <Input placeholder="010-1234-5678" {...field} data-testid="input-phone" />
+                  <Input placeholder="010-1234-5678" {...field} value={field.value || ""} data-testid="input-phone" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -168,10 +182,10 @@ export default function InquiryForm() {
           type="submit" 
           size="lg" 
           className="w-full gap-2"
-          disabled={isSubmitting}
+          disabled={createInquiryMutation.isPending}
           data-testid="button-submit-inquiry"
         >
-          {isSubmitting ? "전송 중..." : "문의하기"}
+          {createInquiryMutation.isPending ? "전송 중..." : "문의하기"}
           <Send className="h-4 w-4" />
         </Button>
       </form>

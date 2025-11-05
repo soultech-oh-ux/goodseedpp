@@ -8,7 +8,7 @@ export const inquiries = pgTable("inquiries", {
   type: text("type").notNull(),
   name: text("name").notNull(),
   email: text("email").notNull(),
-  phone: text("phone"),
+  phone: text("phone").default(""),
   subject: text("subject").notNull(),
   message: text("message").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
