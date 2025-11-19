@@ -1,6 +1,6 @@
 import CenterCard from "./CenterCard";
-import centerImage1 from "@assets/generated_images/Giheung_center_exterior_view_3e0f256e.png";
-import centerImage2 from "@assets/generated_images/Winba_center_interior_activities_45dba3be.png";
+import centerImage1 from "@assets/generated_images/기흥디딤돌센터_실내_독서활동_9272b390.png";
+import centerImage2 from "@assets/generated_images/윈바신갈센터_미술활동_장면_5014943b.png";
 
 export default function CentersSection() {
   const centers = [
