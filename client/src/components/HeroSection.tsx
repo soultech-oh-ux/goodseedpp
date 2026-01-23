@@ -55,16 +55,6 @@ export default function HeroSection() {
           </Button>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20" data-testid="stat-centers">
-            <div className="text-3xl font-bold text-white mb-1">2개</div>
-            <div className="text-sm text-white/80">지역아동센터</div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20" data-testid="stat-location">
-            <div className="text-lg font-bold text-white mb-1">용인시 기흥구</div>
-            <div className="text-sm text-white/80">운영 지역</div>
-          </div>
-        </div>
       </div>
     </section>
   );

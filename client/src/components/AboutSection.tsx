@@ -1,10 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { Users, Target, Heart, Award } from "lucide-react";
+import { Users, Target } from "lucide-react";
 
 export default function AboutSection() {
-  const stats = [
-    { icon: Heart, value: "2개", label: "센터" },
-  ];
 
   return (
     <section className="py-16 md:py-24 bg-background">
@@ -16,7 +13,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="p-8">
             <div className="flex items-start gap-4 mb-4">
               <div className="p-3 bg-primary/10 rounded-lg">
@@ -50,18 +47,6 @@ export default function AboutSection() {
               </div>
             </div>
           </Card>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {stats.map((stat, index) => (
-            <Card key={index} className="p-6 text-center hover-elevate" data-testid={`stat-card-${stat.label}`}>
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
-                <stat.icon className="h-6 w-6 text-primary" />
-              </div>
-              <div className="text-3xl font-bold mb-1">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </Card>
-          ))}
         </div>
       </div>
     </section>
