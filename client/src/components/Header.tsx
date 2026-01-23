@@ -6,17 +6,40 @@ import logoImage from "@assets/60_10굿씨드피플-001_1762335630209.jpg";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const navItems = [
-    { href: "/", label: "홈" },
-    { href: "/about", label: "조합 소개" },
-    { href: "/centers", label: "센터 안내" },
-    { href: "/programs", label: "프로그램" },
-    { href: "/news", label: "소식" },
-    { href: "/support", label: "후원하기" },
-    { href: "/contact", label: "문의" },
+    { href: "/", label: "홈", isAnchor: false },
+    { href: "/#about", label: "조합 소개", isAnchor: true },
+    { href: "/#centers", label: "센터 안내", isAnchor: true },
+    { href: "/#programs", label: "프로그램", isAnchor: true },
+    { href: "/#news", label: "소식", isAnchor: true },
+    { href: "/#support", label: "후원하기", isAnchor: true },
+    { href: "/contact", label: "문의", isAnchor: false },
   ];
+
+  const handleNavClick = (item: { href: string; label: string; isAnchor: boolean }) => {
+    if (item.isAnchor) {
+      const sectionId = item.href.replace("/#", "");
+      if (location !== "/") {
+        setLocation("/");
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    } else {
+      setLocation(item.href);
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
@@ -35,15 +58,15 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <Button
-                  variant={location === item.href ? "secondary" : "ghost"}
-                  size="sm"
-                  data-testid={`link-nav-${item.label}`}
-                >
-                  {item.label}
-                </Button>
-              </Link>
+              <Button
+                key={item.href}
+                variant={location === item.href || (location === "/" && item.isAnchor) ? "ghost" : "ghost"}
+                size="sm"
+                onClick={() => handleNavClick(item)}
+                data-testid={`link-nav-${item.label}`}
+              >
+                {item.label}
+              </Button>
             ))}
           </nav>
 
@@ -63,16 +86,15 @@ export default function Header() {
         <div className="md:hidden border-t bg-card">
           <nav className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <Button
-                  variant={location === item.href ? "secondary" : "ghost"}
-                  className="w-full justify-start"
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-testid={`link-mobile-${item.label}`}
-                >
-                  {item.label}
-                </Button>
-              </Link>
+              <Button
+                key={item.href}
+                variant="ghost"
+                className="w-full justify-start"
+                onClick={() => handleNavClick(item)}
+                data-testid={`link-mobile-${item.label}`}
+              >
+                {item.label}
+              </Button>
             ))}
           </nav>
         </div>
