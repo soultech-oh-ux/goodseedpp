@@ -3,8 +3,6 @@ import { Users, Target, Heart, Award } from "lucide-react";
 
 export default function AboutSection() {
   const stats = [
-    { icon: Users, value: "4명", label: "조합원" },
-    { icon: Award, value: "6명", label: "직원" },
     { icon: Heart, value: "2개", label: "센터" },
   ];
 
