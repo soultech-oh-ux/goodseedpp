@@ -24,9 +24,9 @@ export class MemStorage implements IStorage {
     const mockNews: News[] = [
       {
         id: "1",
-        title: "2025년 상반기 신규 프로그램 안내",
+        title: "새로운 프로그램 개발로 미래 준비",
         excerpt: "새로운 교육 프로그램과 다양한 체험 활동을 준비했습니다. 많은 관심과 참여 부탁드립니다.",
-        content: "2025년 상반기 신규 프로그램을 소개합니다...",
+        content: "새로운 프로그램 개발을 통해 아이들의 미래를 준비합니다...",
         image: null,
         date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
       },
