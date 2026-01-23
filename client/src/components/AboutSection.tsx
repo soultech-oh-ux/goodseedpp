@@ -1,11 +1,23 @@
 import { Card } from "@/components/ui/card";
 import { Users, Target } from "lucide-react";
+import aboutVideo from "@assets/2040_2_1769161678131.mp4";
 
 export default function AboutSection() {
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={aboutVideo} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-background/85 dark:bg-background/90" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">조합 소개</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -14,7 +26,7 @@ export default function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="p-8">
+          <Card className="p-8 bg-card/95 backdrop-blur-sm">
             <div className="flex items-start gap-4 mb-4">
               <div className="p-3 bg-primary/10 rounded-lg">
                 <Target className="h-6 w-6 text-primary" />
@@ -30,7 +42,7 @@ export default function AboutSection() {
             </div>
           </Card>
 
-          <Card className="p-8">
+          <Card className="p-8 bg-card/95 backdrop-blur-sm">
             <div className="flex items-start gap-4 mb-4">
               <div className="p-3 bg-accent/10 rounded-lg">
                 <Users className="h-6 w-6 text-accent-foreground" />
