@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MessageCircle, MapPin } from "lucide-react";
 import logoImage from "@assets/60_10굿씨드피플-001_1762335630209.jpg";
 
 export default function Footer() {
@@ -74,13 +74,15 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <a href="mailto:info@goodseedpeople.or.kr" className="hover:text-foreground transition-colors" data-testid="link-email">
-                  info@goodseedpeople.or.kr
+                <a href="mailto:gseed2030@gmail.com" className="hover:text-foreground transition-colors" data-testid="link-email">
+                  gseed2030@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 flex-shrink-0" />
-                <span>문의 전화 안내 예정</span>
+                <MessageCircle className="h-4 w-4 flex-shrink-0" />
+                <a href="https://open.kakao.com/o/gIw0eVci" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors" data-testid="link-kakao">
+                  카카오 오픈채팅 문의
+                </a>
               </li>
             </ul>
           </div>

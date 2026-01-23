@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import InquiryForm from "@/components/InquiryForm";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -37,11 +37,11 @@ export default function Contact() {
               <div>
                 <h3 className="font-semibold mb-2">이메일</h3>
                 <a 
-                  href="mailto:info@goodseedpeople.or.kr" 
+                  href="mailto:gseed2030@gmail.com" 
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-contact-email"
                 >
-                  info@goodseedpeople.or.kr
+                  gseed2030@gmail.com
                 </a>
               </div>
             </div>
@@ -50,13 +50,19 @@ export default function Contact() {
           <Card className="p-6">
             <div className="flex items-start gap-4">
               <div className="p-3 bg-primary/10 rounded-lg">
-                <Phone className="h-6 w-6 text-primary" />
+                <MessageCircle className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">전화</h3>
-                <p className="text-sm text-muted-foreground">
-                  문의 전화 안내 예정
-                </p>
+                <h3 className="font-semibold mb-2">카카오톡 문의</h3>
+                <a 
+                  href="https://open.kakao.com/o/gIw0eVci" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid="link-contact-kakao"
+                >
+                  카카오 오픈채팅으로 문의하기
+                </a>
               </div>
             </div>
           </Card>
