@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, Coins, HandHeart } from "lucide-react";
-import supportVideo from "@assets/videos/support-background.mp4";
+import supportVideo from "@assets/미래사회2040_1769161323740.mp4";
 
 export default function SupportSection() {
   const supportWays = [
