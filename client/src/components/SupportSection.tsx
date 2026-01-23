@@ -64,6 +64,22 @@ export default function SupportSection() {
               굿씨드피플 사회적협동조합과 함께 지역사회 아동들의 밝은 미래를 만들어가고 싶으신가요?<br />
               후원, 조합원 가입, 재능 기부 등 다양한 방법으로 참여하실 수 있습니다.
             </p>
+            
+            <div className="bg-card rounded-lg p-6 mb-6 max-w-md mx-auto border">
+              <h4 className="font-semibold text-lg mb-3">후원 계좌 안내</h4>
+              <div className="text-left space-y-2">
+                <p className="text-sm">
+                  <span className="text-muted-foreground">은행:</span> <span className="font-medium">농협</span>
+                </p>
+                <p className="text-sm">
+                  <span className="text-muted-foreground">계좌번호:</span> <span className="font-medium">301-0375-6511-31</span>
+                </p>
+                <p className="text-sm">
+                  <span className="text-muted-foreground">예금주:</span> <span className="font-medium">굿씨드피플사회적협동조합</span>
+                </p>
+              </div>
+            </div>
+
             <Button 
               size="lg" 
               className="gap-2"
