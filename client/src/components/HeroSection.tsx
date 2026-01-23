@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart } from "lucide-react";
-import heroImage from "@assets/generated_images/Hero_image_children_learning_98c6be77.png";
+import heroVideo from "@assets/clean_아이들_뛰어노는_모습_(1)_1769161969340.mp4";
 
 export default function HeroSection() {
   const handleSupport = () => {
@@ -16,11 +16,15 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <img 
-          src={heroImage} 
-          alt="아이들이 함께 배우는 모습" 
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/40" />
       </div>
 
