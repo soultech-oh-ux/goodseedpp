@@ -1,6 +1,6 @@
 import CenterCard from "./CenterCard";
 import centerImage1 from "@assets/기흥지역아동센터_1769155718472.png";
-import centerImage2 from "@assets/generated_images/윈바신갈센터_미술활동_장면_5014943b.png";
+import centerImage2 from "@assets/윈바지역아동센터_1769156527270.png";
 
 export default function CentersSection() {
   const centers = [
