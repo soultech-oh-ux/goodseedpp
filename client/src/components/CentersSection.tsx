@@ -12,11 +12,11 @@ export default function CentersSection() {
       website: "https://www.hjy.kr/center/module.php?cId=bora4u&subMenuSerno=931"
     },
     {
-      name: "윈바신갈 지역아동센터",
+      name: "윈바지역아동센터",
       description: "따뜻하고 안전한 환경에서 아이들의 꿈과 재능을 키워갑니다. 전문적인 교육 프로그램과 정서적 지원을 통해 아동들의 전인적 성장을 돕습니다.",
       image: centerImage2,
       address: "용인시 기흥구",
-      website: "https://www.hjy.kr/center/index.php?cId=em-pk"
+      website: "https://hjy.kr/center/index.php?cId=em-pk"
     }
   ];
 
